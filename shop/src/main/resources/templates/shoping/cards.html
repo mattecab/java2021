@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+.center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
+</style>
+</head>
+<div class="center">
+  <p>here!</p>
+
+
+<h3>Cards listaaaaaa</h3>
+<table>
+
+	<tr th:each="card:${cards}">
+		<td th:text="${card.id}"></td>
+		<td th:text="${card.typeCreditCard}"></td>
+		<td th:text="${card.numberCreditCard}"></td>
+		<td th:text="${card.loan}"></td>
+	</tr>
+
+</table>
+</div>
+</html>
