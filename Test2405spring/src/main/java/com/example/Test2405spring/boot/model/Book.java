@@ -1,5 +1,6 @@
 package com.example.Test2405spring.boot.model;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class Book {
 	private Long id;
 	private String title;
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private ArrayList<Quote> quotes= new ArrayList<Quote>();
+    private List<Quote> quotes= new ArrayList<Quote>();
 
  Book() {}
 
@@ -54,7 +55,7 @@ public void setTitle(String name) {
 		this.title = name;
 	}
 	
-public ArrayList<Quote> getQuotes() {
+public List<Quote> getQuotes() {
 		return quotes;
 	}
 
