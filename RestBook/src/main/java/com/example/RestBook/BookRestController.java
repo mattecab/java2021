@@ -1,0 +1,33 @@
+package com.example.RestBook;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/webapi")
+public class BookRestController {
+
+	@Autowired
+	BookRepository repository;
+
+	@GetMapping("/books")
+	public Iterable<Book> findAll() {
+
+		return repository.findAll();
+	}
+	@PostMapping(path="/books", consumes="application/json")
+	public void insertBook(@RequestBody Book book) {
+
+		repository.save(book);
+	}
+	
+	@DeleteMapping("/books/{title}")
+	public void deleteBook(@PathVariable String title) {
+		
+		Optional<Book> book =repository.findById(title);
+		
+		if (book.isPresent()) {
+			repository.delete(book.get());
+			
+		}
