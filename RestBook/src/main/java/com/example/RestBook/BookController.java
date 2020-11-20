@@ -2,7 +2,9 @@ package com.example.RestBook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/books")
@@ -21,7 +23,7 @@ public class BookController {
 	@RequestMapping("/newBook")
 	public String newBook() {
 
-		return "books/newBook.html";
+		return "books/NewBook.html";
 	}
 
 	@RequestMapping("/insertBook")
