@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <link rel="stylesheet"
@@ -8,9 +6,27 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <style>
-form { margin: 20px;}
+form { 
+
+
+	margin:20px;
+	padding:10px;
+	border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 60%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+
+
 </style>
 </head>
+<h2>Form add book and some text</h2>
+				<p>The HTML template Thymeleaf recives data from model object
+					with attribute tag "library" and uses it with "th" tags, we also
+					use bootstrap</p>
+			
 <body>
 	<form action="insertBook">
 		<div class="form-group">
@@ -34,8 +50,3 @@ form { margin: 20px;}
 	</form>
 </body>
 </html>
-
-
-
-
-

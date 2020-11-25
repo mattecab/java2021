@@ -23,7 +23,7 @@ public class BookController {
 	@RequestMapping("/newBook")
 	public String newBook() {
 
-		return "books/newBook.html";
+		return "books/NewBook.html";
 	}
 
 	@RequestMapping("/insertBook")

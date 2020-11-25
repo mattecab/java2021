@@ -23,6 +23,7 @@ public class BookRestController {
 
 		return repository.findAll();
 	}
+	
 	@PostMapping(path="/books", consumes="application/json")
 	public void insertBook(@RequestBody Book book) {
 
