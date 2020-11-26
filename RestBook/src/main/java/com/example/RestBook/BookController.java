@@ -25,6 +25,12 @@ public class BookController {
 
 		return "books/NewBook.html";
 	}
+	@RequestMapping("/arrivederci")
+	public String arrivederci() {
+
+		return "books/bye.html";
+	}
+	
 
 	@RequestMapping("/insertBook")
 	public String insertBook(Book book, Model model) {
