@@ -1,5 +1,4 @@
 package com.example.RestBook;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -50,3 +49,4 @@ public class Book {
 		super();
 	}	
 	}
+>>>>>>> refs/remotes/origin/master
