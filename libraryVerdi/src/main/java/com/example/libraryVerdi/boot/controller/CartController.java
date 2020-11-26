@@ -5,13 +5,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.libraryVerdi.boot.model.Book;
+
 public class CartController {
 	@RequestMapping(value = "rent the book", method = RequestMethod.GET)
-	public String add(@RequestParam("bookId") Long id, HttpSession session) {
+	public String add(@RequestParam("bookId") Long id, HttpSession session, Model model) {
 
 		// ProductModel productModel = new ProductModel();
 
@@ -24,7 +27,7 @@ public class CartController {
 
 		} else {
 
-			List<ProductCart> cart = (List<ProductCart>) session.getAttribute("cart");
+			List<Book> cart = (List<Book>) session.getAttribute("cart");
 
 			int index = this.exists(id, cart);
 			if (index == -1) {
@@ -36,4 +39,4 @@ public class CartController {
 
 			session.setAttribute("cart", cart);
 		}
-}
+	}}
