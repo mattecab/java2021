@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+<h3>Book list</h3>
+
+
+
+<table>
+	<tr th:each="item:${listbook}" 
+		<td th:text="${item.book.id}"></td>
+		<td th:text="${item.book.name}"></td>
+		<td th:text="${item.book.author}"></td>
+		
+		<td><a
+			th:href="@{/cart/removeFromCart(itemId=${item.product.id})}">Remove
+				from Cart</a></td>
+	</tr>
+</table>
+</body>
+</html>

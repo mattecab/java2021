@@ -6,13 +6,13 @@
 <table>
 
 	<tr th:each="book:${books}">
-		<td th:text="${item.id}"></td>
-		<td th:text="${item.name}"></td>
-		<td th:text="${item.brand}"></td>
-		<td th:text="${item.madein}"></td>
-		<td th:text="${#numbers.formatCurrency(item.price)}"></td>
-		<td><a th:href="@{/cart/addToCart(itemId=${item.id})}">Add to
-				Cart</a></td>
+		<td th:text="${book.id}"></td>
+		<td th:text="${book.name}"></td>
+		<td th:text="${book.author}"></td>
+		
+		
+		<td><a th:href="@{/cart/rentbook(itemId=${item.id})}">Rent
+				Book</a></td>
 		
 		
 	</tr>

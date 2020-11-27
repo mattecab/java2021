@@ -5,14 +5,21 @@
 <h3>Add Book </h3>
 
 <!-- <form action="Book"> -->
-<form th:action="@{/books/insertBook}" th:object="${Book}" method="post">
+<form th:action="insertBook">
      
+     
+     
+     
+     <p>
+		<label>Type id</label> <input id="id"
+			type="text">
+	</p>
 	<p>
 		<label>Type Book</label> <input name="name"
 			type="text">
 	</p>
 	<p>
-		<label>Type Author</label> <input name="author"
+		<label>Type Author</label> <input author="author"
 			type="text">
 	</p>
 	
@@ -21,4 +28,4 @@
 	</p>
 	
 </form>
-</html>>
+</html>

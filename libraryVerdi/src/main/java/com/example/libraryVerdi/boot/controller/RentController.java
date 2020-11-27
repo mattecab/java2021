@@ -23,5 +23,5 @@ public class RentController {
 }
 	
 
-		model.addAttribute("items", service.findAll());
+		//model.addAttribute("items", service.findAll());
 	}
