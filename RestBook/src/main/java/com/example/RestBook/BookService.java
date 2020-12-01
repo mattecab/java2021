@@ -27,8 +27,3 @@ public class BookService {
 
 }
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/master

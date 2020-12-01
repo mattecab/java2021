@@ -13,7 +13,9 @@ public class BookRented {
 	    private Long id;
 		private Book book;
 	
-		public BookRented() {}
+		public BookRented(Long id) {
+			this.id=id;
+		}
 			
 		public BookRented(Book book) {
 			super();

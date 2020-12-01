@@ -47,6 +47,4 @@ public class Book {
 
 	public Book() {
 		super();
-	}	
-	}
->>>>>>> refs/remotes/origin/master
+	}}

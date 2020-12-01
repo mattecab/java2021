@@ -62,6 +62,6 @@ public class CreditCardController {
 		
 		
 		model.addAttribute("cards", service.findAll());
-		return "shoping/cards.html";
+		return "shoping/card.html";
 	}
 }

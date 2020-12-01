@@ -8,14 +8,18 @@
 
 
 <table>
-	<tr th:each="item:${listbook}" 
-		<td th:text="${item.book.id}"></td>
-		<td th:text="${item.book.name}"></td>
-		<td th:text="${item.book.author}"></td>
+	<tr th:each="book:${books}" >
+		<td th:text="${book.id}"></td>
+		<td th:text="${book.name}"></td>
+		<td th:text="${book.author}"></td>
+		<td><a th:href="@{/books/rent(bookId=${book.id})}">Add to
+				Cart</a></td>
 		
-		<td><a
-			th:href="@{/cart/removeFromCart(itemId=${item.product.id})}">Remove
-				from Cart</a></td>
+		<td>Status:</td><td th:text="${status}"></td>
+
+		
+	</tr>
+		
 	</tr>
 </table>
 </body>
