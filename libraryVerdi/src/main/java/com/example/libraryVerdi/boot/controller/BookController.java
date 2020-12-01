@@ -14,23 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping ("/books")
 public class BookController {
 	
-	@RequestMapping("/addBook")
-	public String addBook (Model model) {
+	@RequestMapping("/list")
+	public String show() {
 		
-		return "library/addBook";
+		return "library/show";
 	}
 	
 	
-	@RequestMapping(value = "/insertBook", method = RequestMethod.GET)
-	public String insertBook(@RequestParam("name") String name, @RequestParam("author") String author,@RequestParam("id") Long id, Book book) {
-		
-		List<Book> listbook = new ArrayList<Book>();
-		//listbook.add(new Book(id,name,author));
-		
-		
-		return "library/ListBook";
-	
-	
-	}}
+
+	}
 
 
