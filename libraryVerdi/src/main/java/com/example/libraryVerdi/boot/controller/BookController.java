@@ -16,13 +16,14 @@ import com.example.libraryVerdi.boot.service.BookService;
 @Controller
 @RequestMapping ("/books")
 public class BookController {
-	
 	@Autowired
 	BookService service;
+
 	
 	@RequestMapping("/show")
 	public String show(Model model) {
 		model.addAttribute("books", service.findAll());
+
 		return "library/ListBook";
 	}
 	

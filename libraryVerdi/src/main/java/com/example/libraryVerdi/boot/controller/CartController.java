@@ -16,10 +16,11 @@ import com.example.libraryVerdi.boot.model.Book;
 import com.example.libraryVerdi.boot.model.BookRented;
 import com.example.libraryVerdi.boot.service.BookService;
 
-
 @Controller
 @RequestMapping(value = "cart")
+
 public class CartController {
+
 
 	@Autowired
 	BookService service;
@@ -33,23 +34,28 @@ public class CartController {
 	@RequestMapping(value = "rent", method = RequestMethod.GET)
 	public String add(@RequestParam("bookId") Long id, HttpSession session) {
 
-		
 
+	
+
+		// ProductModel productModel = new ProductModel();
 		if (session.getAttribute("cart") == null) {
 
 			List<BookRented> cart = new ArrayList<BookRented>();
 
 			cart.add(new BookRented(service.findById(id)));
-			
 			session.setAttribute("cart", cart);
 
 		} else {
 
 			List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
 
+            cart.add(new BookRented(service.findById(id)));
+
+
 			
 				cart.add(new BookRented(service.findById(id)));
 			
+
 
 			session.setAttribute("cart", cart);
 		}
@@ -58,6 +64,49 @@ public class CartController {
 		session.setAttribute("sid", sid);
 		System.out.println("Session id: " + sid);
 
+
+		return "redirect:/cart/show";
+	}
+
+	/*@RequestMapping(value = "returnBook", method = RequestMethod.GET)
+	public String remove(@RequestParam("itemId") Long id, HttpSession session) {
+
+		// ProductModel productModel = new ProductModel();
+		List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
+		cart.remove(service.findById(id));
+		session.setAttribute("cart", cart);
+
+		return "redirect:/cart/show";
+	}
+
+	@RequestMapping(value = "deleteSession", method = RequestMethod.GET)
+	public String deleteSession(HttpSession session) {
+
+		if (session.getAttribute("cart") != null) {
+			session.invalidate();
+		}
+
+		return "redirect:/cart/index";
+	}
+
+	@RequestMapping(value = "deleteCart", method = RequestMethod.GET)
+	public String deleteCart(HttpSession session) {
+
+		if (session.getAttribute("cart") != null) {
+
+			// ProductModel productModel = new ProductModel();
+			List<BookRented> cart = new ArrayList<BookRented>();
+			cart.removeAll(cart);
+			session.setAttribute("cart", cart);
+
+		}
+
+		return "redirect:/cart/index";
+	}
+
+	
+
+}
 		return "redirect:/Cart/show";
 	}
 
@@ -103,3 +152,4 @@ public class CartController {
 */
 	
 }
+

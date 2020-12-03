@@ -5,7 +5,9 @@ package com.example.libraryVerdi.boot.model;
 import com.example.libraryVerdi.boot.model.Book;
 
 public class BookRented {
+
 	
+	    private Long id;
 		private Book book;
 	
 			
