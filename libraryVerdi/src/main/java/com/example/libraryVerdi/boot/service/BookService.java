@@ -1,11 +1,12 @@
 package com.example.libraryVerdi.boot.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.libraryVerdi.boot.model.Book;
 import com.example.libraryVerdi.boot.repository.BookRepository;
-
 
 @Service
 public class BookService {
@@ -28,5 +29,8 @@ public class BookService {
 		
 		repository.delete(book);
 	}
+	public Book findById (long id) {
 
-}
+		return repository.findById(id);
+
+}}

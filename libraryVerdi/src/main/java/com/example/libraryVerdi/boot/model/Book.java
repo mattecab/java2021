@@ -1,23 +1,48 @@
 package com.example.libraryVerdi.boot.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+//@Table(name="books")
+
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private String author;
-
+	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Reservations> reservations;
 
 public Book(Long id, String name, String author) {
 	this.id=id;
 	this.name=name;
 	this.author=author;
+}
+
+
+/**
+ * @return the reservation
+ */
+public List<Reservations> getReservations() {
+	return reservations;
+}
+
+
+/**
+ * @param reservation the reservation to set
+ */
+public void setReservations(List<Reservations> reservations) {
+	this.reservations = reservations;
 }
 
 

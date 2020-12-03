@@ -12,15 +12,15 @@
 		<td th:text="${book.id}"></td>
 		<td th:text="${book.name}"></td>
 		<td th:text="${book.author}"></td>
-		<td><a th:href="@{/books/rent(bookId=${book.id})}">Add to
+		<td><a th:href="@{/cart/rent(bookId=${book.id})}">Add to
 				Cart</a></td>
 		
-		<td>Status:</td><td th:text="${status}"></td>
+		
 
 		
 	</tr>
 		
-	</tr>
+
 </table>
 </body>
 </html>
