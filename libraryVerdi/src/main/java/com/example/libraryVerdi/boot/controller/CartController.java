@@ -45,7 +45,9 @@ public class CartController {
 			cart.add(new BookRented(service.findById(id)));
 			session.setAttribute("cart", cart);
 
-		} else {
+		} 
+		
+		else {
 
 			List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
 
@@ -68,15 +70,15 @@ public class CartController {
 		return "redirect:/cart/show";
 	}
 
-	/*@RequestMapping(value = "returnBook", method = RequestMethod.GET)
-	public String remove(@RequestParam("itemId") Long id, HttpSession session) {
+	@RequestMapping(value = "returnBook", method = RequestMethod.GET)
+	public String bookback(@RequestParam("bookId") Long id, HttpSession session) {
 
 		// ProductModel productModel = new ProductModel();
 		List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
 		cart.remove(service.findById(id));
 		session.setAttribute("cart", cart);
 
-		return "redirect:/cart/show";
+		return "redirect:/books/show";
 	}
 
 	@RequestMapping(value = "deleteSession", method = RequestMethod.GET)
@@ -86,7 +88,7 @@ public class CartController {
 			session.invalidate();
 		}
 
-		return "redirect:/cart/index";
+		return "/home";
 	}
 
 	@RequestMapping(value = "deleteCart", method = RequestMethod.GET)
@@ -101,55 +103,17 @@ public class CartController {
 
 		}
 
-		return "redirect:/cart/index";
-	}
+		return "/home";
+	
+	
+}
 
 	
 
-}
-		return "redirect:/Cart/show";
-	}
+	
 
-	/*@RequestMapping(value = "bookReturned", method = RequestMethod.GET)
-	public String remove(@RequestParam("BookId") Long id, HttpSession session) {
+	
 
-		
-		List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
-		
-				cart.remove(service.findById(id));
-		
-
-		session.setAttribute("cart", cart);
-
-		return "redirect:/cart/show";
-	}
-
-	@RequestMapping(value = "deleteSession", method = RequestMethod.GET)
-	public String deleteSession(HttpSession session) {
-
-		if (session.getAttribute("cart") != null) {
-			session.invalidate();
-		}
-
-		return "redirect:/cart/show";
-	}
-
-	@RequestMapping(value = "deleteCart", method = RequestMethod.GET)
-	public String deleteCart(HttpSession session) {
-
-		if (session.getAttribute("cart") != null) {
-
-		
-			List<BookRented> cart = new ArrayList<BookRented>();
-			
-			cart.removeAll(cart);
-			session.setAttribute("cart", cart);
-
-		}
-
-		return "redirect:/cart/show";
-	}
-*/
 	
 }
 

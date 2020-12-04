@@ -34,6 +34,8 @@ public class Reservations {
 			
 			
 		}
+		
+		public Reservations() {}
 
 		@Override
 		public String toString() {

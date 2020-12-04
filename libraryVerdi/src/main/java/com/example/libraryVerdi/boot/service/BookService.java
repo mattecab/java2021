@@ -1,6 +1,6 @@
 package com.example.libraryVerdi.boot.service;
 
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class BookService {
 		repository.save(book);
 	}
 	
-	public void deleteBook(Book book) {
+	public void remove(Book book) {
 		
 		repository.delete(book);
 	}

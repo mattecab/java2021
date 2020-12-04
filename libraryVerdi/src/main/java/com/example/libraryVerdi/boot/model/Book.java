@@ -29,7 +29,7 @@ public Book(Long id, String name, String author) {
 	this.author=author;
 }
 
-
+public Book( ) {}
 /**
  * @return the reservation
  */
