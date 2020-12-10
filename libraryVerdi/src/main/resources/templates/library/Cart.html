@@ -7,16 +7,34 @@
 
 
 <table>
-	<tr th:each="libro:${session.cart}" th:unless="${session == null}">
-		<td th:text="${libro.book.id}"></td>
-		<td th:text="${libro.book.name}"></td>
-		<td th:text="${libro.book.author}"></td>
+	<tr th:each="items:${session.cart}" th:unless="${session == null}">
+		<td th:text="${items.book.id}"></td>
+		<td th:text="${items.book.name}"></td>
+		<td th:text="${items.book.author}"></td>
 		<td><a
-			th:href="@{/cart/returnBook(bookId=${libro.book.id})}">Renturn Book
+			th:href="@{/cart/returnBook(bookId=${items.book.id})}">Return Book
 			
-			</a></td>
+			</a>
+			<<a th:href="@{/cart/deleteCart}">Delete to
+
+				Cart</a>
+				
+				</td>
 		
 			
 	</tr>
 </table>
 
+<Br><Br><Br><Br>
+<div>
+		<table>
+			<tr>
+
+				<td><a th:href="@{/books/show}">Book List</a></td>
+				<td><a th:href="@{library/home}">home</a></td>
+				
+				
+			</tr>
+		</table>
+	</div>
+	</html>

@@ -2,6 +2,7 @@ package com.example.libraryVerdi.boot.model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,8 +19,11 @@ public class Reservations {
 	 	  
 	  @Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
+	  @Column(name = "ID")
 		private Long id;
+	  @Column(name = "DATE")
 		private Date date;
+	  @Column(name = "STATUS")
 		private String status;
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "BOOK_ID_FK", nullable = true)

@@ -1,7 +1,9 @@
 package com.example.libraryVerdi.boot.controller;
 
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.libraryVerdi.boot.model.Book;
 import com.example.libraryVerdi.boot.model.BookRented;
 import com.example.libraryVerdi.boot.service.BookService;
+import com.example.libraryVerdi.boot.service.ReservationsService;
+import com.example.libraryVerdi.boot.utils.StatusSession;
+
 
 @Controller
 @RequestMapping(value = "cart")
@@ -24,6 +29,9 @@ public class CartController {
 
 	@Autowired
 	BookService service;
+	
+	@Autowired
+	ReservationsService Resaservice;
 
 	@RequestMapping(value = "show", method = RequestMethod.GET)
 	public String home(HttpSession session) {
@@ -35,37 +43,34 @@ public class CartController {
 	public String add(@RequestParam("bookId") Long id, HttpSession session) {
 
 
-	
+		List<BookRented> cart ;
 
 		// ProductModel productModel = new ProductModel();
 		if (session.getAttribute("cart") == null) {
 
-			List<BookRented> cart = new ArrayList<BookRented>();
+			cart = new ArrayList<BookRented>();
 
 			cart.add(new BookRented(service.findById(id)));
 			session.setAttribute("cart", cart);
+            session.setAttribute("status", StatusSession.RENTED);
+            
+           
+            String sid = session.getId();
+    		session.setAttribute("sid", sid);
+    		System.out.println("Session id: " + sid);
 
 		} 
 		
 		else {
 
-			List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
+			cart = (List<BookRented>) session.getAttribute("cart");
 
             cart.add(new BookRented(service.findById(id)));
-
-
-			
-				cart.add(new BookRented(service.findById(id)));
-			
-
-
+            session.setAttribute("status", StatusSession.RENTED);
 			session.setAttribute("cart", cart);
 		}
 
-		String sid = session.getId();
-		session.setAttribute("sid", sid);
-		System.out.println("Session id: " + sid);
-
+		
 
 		return "redirect:/cart/show";
 	}
@@ -75,10 +80,10 @@ public class CartController {
 
 		// ProductModel productModel = new ProductModel();
 		List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
-		cart.remove(service.findById(id));
+		int index = exists(id, cart);
+		cart.remove(index);
 		session.setAttribute("cart", cart);
-
-		return "redirect:/books/show";
+		return "redirect:/cart/show";
 	}
 
 	@RequestMapping(value = "deleteSession", method = RequestMethod.GET)
@@ -88,8 +93,18 @@ public class CartController {
 			session.invalidate();
 		}
 
-		return "/home";
+		return "library/home";
 	}
+	private static int exists(Long id, List<BookRented> cart) {
+
+		for (int i = 0; i < cart.size(); i++) {
+
+			if (cart.get(i).getBook().getId() == id) {
+				return i;
+			}
+
+		}
+		return -1;}
 
 	@RequestMapping(value = "deleteCart", method = RequestMethod.GET)
 	public String deleteCart(HttpSession session) {
@@ -97,13 +112,13 @@ public class CartController {
 		if (session.getAttribute("cart") != null) {
 
 			// ProductModel productModel = new ProductModel();
-			List<BookRented> cart = new ArrayList<BookRented>();
+			List<BookRented> cart = (List<BookRented>) session.getAttribute("cart");
 			cart.removeAll(cart);
 			session.setAttribute("cart", cart);
 
 		}
 
-		return "/home";
+		return "library/home";
 	
 	
 }

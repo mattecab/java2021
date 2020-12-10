@@ -3,6 +3,7 @@ package com.example.libraryVerdi.boot.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,8 +18,11 @@ import javax.persistence.Table;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long id;
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "AUTHOR")
 	private String author;
 	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Reservations> reservations;
